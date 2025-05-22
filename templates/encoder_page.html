@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decon | Encoder</title>
+</head>
+
+<body>
+
+    <form action="{{ url_for('encoder_page')}}" method="post"> 
+        <input name="taking_simple_text" type="text"> 
+        <button type="submit">Encode</button> 
+    </form>
+        
+    <p>{{encoded_text}}</p>
+    
+</body>
+
+</html>
