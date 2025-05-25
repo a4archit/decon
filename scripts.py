@@ -46,14 +46,40 @@ class Encoder:
         text = text.replace(' ','#')
 
         # 4) replacing spacial characters
-        text = text.replace('a','@')
-        text = text.replace('o','0')
-        text = text.replace('t','+')
-        text = text.replace('s','$')
-        text = text.replace('v','^')
-        text = text.replace('x','*')
-        text = text.replace('d','&')
-        text = text.replace('p','%')
+        replacing_data = {
+                'q': '~',
+                'w': '!',
+                'e': '@',
+                'r': '$',
+                't': '%',
+                'y': '^',
+                'u': '&',
+                'i': '*',
+                'o': '(',
+                'a': ')',
+                's': '-',
+                'd': '_',
+                'f': '+',
+                'g': '=',
+                'h': '[',
+                'j': ']',
+                'k': '{',
+                'l': '}',
+                'z': '|',
+                'x': ':',
+                'c': ';',
+                'v': '<',
+                'b': '>',
+                'n': '?',
+                'm': '"',
+                'p': '.'
+        }
+
+
+        for char in replacing_data.keys():
+            text = text.replace(char, replacing_data[char])
+            print(f"\t\t'{replacing_data[char]}': '{char}',")
+            
 
         return text
 
@@ -89,16 +115,40 @@ class Decoder:
                 text = self.text
 
 
+        replacing_data = {
+                '~': 'q',
+                '!': 'w',
+                '@': 'e',
+                '$': 'r',
+                '%': 't',
+                '^': 'y',
+                '&': 'u',
+                '*': 'i',
+                '(': 'o',
+                ')': 'a',
+                '-': 's',
+                '_': 'd',
+                '+': 'f',
+                '=': 'g',
+                '[': 'h',
+                ']': 'j',
+                '{': 'k',
+                '}': 'l',
+                '|': 'z',
+                ':': 'x',
+                ';': 'c',
+                '<': 'v',
+                '>': 'b',
+                '?': 'n',
+                '"': 'm',
+                '.': 'p'
+        }
+
 
         # 1) replacing spacial characters
-        text = text.replace('@','a')
-        text = text.replace('0','o')
-        text = text.replace('+','t')
-        text = text.replace('$','s')
-        text = text.replace('^','v')
-        text = text.replace('*','x')
-        text = text.replace('&','d')
-        text = text.replace('%','p')
+        for char in replacing_data.keys():
+            text = text.replace(char, replacing_data[char])
+
 
         # 2) replacing blank space by "#"
         text = text.replace('#',' ')
@@ -137,5 +187,5 @@ if __name__ == "__main__":
 
     decoder = Decoder(encoded_text)
 
-    print(decoder.basic_decoding())
+    print(encoded_text, "\n\n", decoder.basic_decoding(encoded_text))
 
