@@ -74,7 +74,7 @@ def main() -> None:
             updated_text = get_converted_text(text, operation_type)
             
 
-        except Exception as e:
+        except Exception as e: 
             print(e)
 
         return render_template("html_content.html", operation_type=operation_type, updated_text=updated_text)
